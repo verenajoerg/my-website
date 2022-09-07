@@ -2,4 +2,10 @@
 title: "My Website"
 ---
 
-Welcome to my Website!
+**Hi everyone! Welcome to my Website**
+
+![](dolphin.jpg){width="50%"}
+
+***Updates***
+
+![](otter.jpg){width="50%"}
