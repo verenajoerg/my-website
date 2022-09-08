@@ -8,7 +8,7 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
-
+      - schedule.qmd
 format:
   html:
     theme: cosmo
