@@ -1,8 +1,16 @@
 ---
-title: "About This Website"
+title: "About me"
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
-This is my bio...
+![](joerg-verena.jpg){width="150"}
 
+Function: Doctoral Candidate
 
+Unit: Schulisches Lehren und Lernen
 
+Department: Teacher and Teaching Quality
+
+[Joerg[\@]dipf.de](mailto:Joerg@dipf.de){.email}

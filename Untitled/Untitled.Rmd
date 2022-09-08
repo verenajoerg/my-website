@@ -1,0 +1,122 @@
+---
+title: "Template for Guide Documents"
+subtitle: "Using HTML Output for Guides to be displayed on Web"
+author:
+ - name: Firstname1 Lastname1
+   affiliation: Where Are U
+   email: email1@where.edu
+ - name: Firstname2 Lastname2
+   affiliation: Where Are U
+   email: email2@where.edu
+advertise: >
+   Please  visit [http://crmda.ku.edu/guides](http://crmda.ku.edu/guides) 
+keywords: guide, Rmarkdown
+abstract: >
+    Author, please REMEMBER TO INCLUDE AN ABSTRACT BEFORE FINALIZING THIS DOCUMENT!
+checked_by: "First Last"
+Note to Authors: please_dont_change_the_next 4 lines!
+date: "`r format(Sys.time(), '%b. %e %Y')`"
+output:
+  stationery::crmda_html_document:
+    toc: true
+    toc_depth: 2
+    highlight: haddock
+    theme: default
+    citation_package: natbib
+    css: theme/kutils.css
+    template: theme/guide-template.html
+guide_number: 00
+bibliography: R.bib
+logoleft: theme/logoleft.png
+logoright: theme/logo-vert.png
+---
+
+```{r ignoremeRsetup, include=FALSE, results='hide'}
+##This Invisible Chunk is required in all CRMDA documents
+outdir <- paste0("tmpout")
+if (!file.exists(outdir)) dir.create(outdir, recursive = TRUE)
+knitr::opts_chunk$set(echo=TRUE, comment=NA, fig.path=paste0(outdir, "/p-"))
+opts.orig <- options()
+par.orig <- par(no.readonly=TRUE)
+options(width = 70)
+```
+
+```{r ignoremeTexcopy, echo=F, results='hide'}
+library(stationery)
+## If theme directory does not have required images or TeX files
+## we need to retrieve them and put them in "theme" directory. 
+logos <- c("logoleft.png", "logo-vert.png")
+try(getFiles(logos, pkg = "stationery", overwrite = FALSE))
+## These theme files should be available already, but if not
+themefiles <- c("kutils.css", "guide-template.html")
+try(getFiles(themefiles, pkg = "stationery", overwrite = FALSE))
+## If you do not have a file after that, 
+## the following will manufacture a blank image for a placeholder
+if(!file.exists("theme/logoleft.png")){
+  blankPNG(file = "theme/logoleft.png", height=200, width=200, messg = "")
+}
+if(!file.exists("theme/logo-vert.png")){
+  blankPNG(file = "theme/logo-vert.png", height=200, width=200, messg = "")
+}
+```
+
+# Level 1 heading
+
+This is the template file for Markdown documents prepared
+with R [@RCore] using the CRMDA template. It was probably created by
+
+```
+library(stationery)
+initWriteup("rmd2html-guide")
+```
+
+# To edit and compile
+
+See the "instructions" file with this document.
+
+# HTML Special Features
+
+The instructions document also has a brief reminder about
+how to specify highlighted call out sections and tabbed sections.
+Many more details are in the vignette, "HTML_special_features"
+distributed with the package.
+
+
+# Equations and code chunks can be used too.
+
+Code chunks for HTML documents were the prototype motivation for the
+development of R markdown. Chunks will work well.
+
+The usage of R code chunks is discussed in the vignette "code chunks".
+Some examples are included in the instructions file, in the current
+directory.
+
+
+
+[//]: (All guides must have this as the final stanza)
+
+## R Replication Information
+```{r sessionInfo, echo = FALSE}
+sessionInfo()
+```
+
+```{r warnings, echo = FALSE}
+if(!is.null(warnings())){
+    print("Warnings:")
+    warnings()
+}
+```
+
+```{r RoptionsRestore, echo=FALSE, include=FALSE}
+## Don't delete this. It puts the interactive session options
+## back the way they were. If this is compiled within a session
+## it is vital to do this.
+options(opts.orig)
+par(par.orig)
+```
+
+Available under
+[Created Commons license 3.0 <img src="http://crmda.dept.ku.edu/images/cc-3.0.png" alt="CC BY"
+style="width: 75px;height: 20px;"/>](http://creativecommons.org/licenses/by/3.0/)
+
+# References

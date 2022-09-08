@@ -1,4 +1,6 @@
 name: "my-website"
+output:   
+    theme: flatly
 navbar:
   title: "My Website"
   left:
